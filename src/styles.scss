@@ -1,1 +1,282 @@
-/* You can add global styles to this file, and also import other style files */
+:root {
+  --ink: #24204d;
+  --ink-soft: #4e4560;
+  --muted: #7d7158;
+  --paper: #fbf3dc;
+  --paper-deep: #f3e7c3;
+  --leaf: #fffdf7;
+  --rule: #ead9a8;
+  --rule-soft: #f3e8c8;
+  --pencil: #cdbb8a;
+
+  --violet: #6a4be0;
+  --violet-deep: #4a30b8;
+  --violet-soft: #ece8ff;
+
+  --pink: #ffcadb;
+  --pink-deep: #e88fac;
+  --lilac: #d6cfff;
+  --lilac-deep: #a597f0;
+  --sky: #c6e5ff;
+  --sky-deep: #82b9e8;
+  --mint: #c2ecdf;
+  --mint-deep: #78c7ae;
+  --butter: #ffdf7e;
+  --butter-deep: #deac2e;
+
+  --cobalt: var(--violet);
+  --cobalt-deep: var(--violet-deep);
+  --cobalt-wash: var(--violet-soft);
+  --naples: #f4b52f;
+  --naples-deep: #d1901a;
+  --naples-wash: #ffefc2;
+  --verdigris: #22a874;
+  --verdigris-deep: #17845a;
+  --verdigris-wash: #ddf6ec;
+  --lacca: #e5566b;
+  --lacca-deep: #bf3a4f;
+  --lacca-wash: #fde4e8;
+
+  --bg: var(--paper);
+  --surface: var(--leaf);
+  --surface-2: var(--paper-deep);
+  --line: var(--rule-soft);
+  --primary: var(--violet);
+  --primary-dark: var(--violet-deep);
+  --primary-soft: var(--violet-soft);
+  --gold: var(--naples);
+  --gold-dark: var(--naples-deep);
+  --gold-soft: var(--naples-wash);
+  --success: var(--verdigris);
+  --success-dark: var(--verdigris-deep);
+  --success-soft: var(--verdigris-wash);
+  --error: var(--lacca);
+  --error-dark: var(--lacca-deep);
+  --error-soft: var(--lacca-wash);
+  --flame: #ff8a3d;
+  --locked: var(--rule);
+  --locked-dark: var(--pencil);
+
+  --radius: 16px;
+  --radius-lg: 26px;
+  --shadow: 0 2px 4px rgba(120, 90, 20, 0.06), 0 14px 34px -12px rgba(120, 90, 20, 0.22);
+  --font-ui: 'Nunito', system-ui, -apple-system, 'Segoe UI', sans-serif;
+  --font-display: 'Bodoni Moda', 'Didot', Georgia, serif;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  color: var(--ink);
+  font-family: var(--font-ui);
+  font-size: 16px;
+  line-height: 1.55;
+  -webkit-font-smoothing: antialiased;
+}
+
+body {
+  background: var(--paper);
+  min-height: 100dvh;
+}
+
+h1,
+h2 {
+  font-family: var(--font-display);
+  font-weight: 600;
+  line-height: 1.12;
+  margin: 0 0 0.5rem;
+  letter-spacing: -0.01em;
+}
+h3 {
+  font-family: var(--font-ui);
+  font-weight: 800;
+  line-height: 1.25;
+  margin: 0 0 0.5rem;
+}
+h1 { font-size: clamp(2rem, 4.4vw, 3.15rem); }
+h2 { font-size: 1.55rem; }
+h3 { font-size: 1.12rem; }
+.kicker { font: italic 600 1.05rem var(--font-display); color: var(--violet); }
+p { margin: 0 0 0.75rem; }
+a { color: var(--violet); font-weight: 700; text-decoration: none; }
+a:hover { text-decoration: underline; text-underline-offset: 3px; }
+::selection { background: var(--lilac); }
+
+.muted { color: var(--muted); }
+.small { font-size: 0.875rem; }
+.center { text-align: center; }
+.stack { display: flex; flex-direction: column; gap: 1rem; }
+.row { display: flex; align-items: center; gap: 0.75rem; flex-wrap: wrap; }
+.spacer { flex: 1; }
+.numeral { font-family: var(--font-display); font-weight: 600; font-variant-numeric: lining-nums; }
+
+
+.container {
+  width: 100%;
+  max-width: 1080px;
+  margin: 0 auto;
+  padding: 0 16px;
+}
+
+.card,
+.leaf {
+  position: relative;
+  background: var(--leaf);
+  border-radius: var(--radius-lg);
+  padding: 1.5rem;
+  box-shadow: var(--shadow);
+}
+.card.raised { box-shadow: var(--shadow); }
+
+.tile {
+  --tile: var(--lilac);
+  --tile-deep: var(--lilac-deep);
+  position: relative;
+  background: var(--tile);
+  border-radius: 24px;
+  box-shadow: 0 7px 0 var(--tile-deep);
+  padding: 1.25rem;
+  color: var(--ink);
+}
+.tile.pink { --tile: var(--pink); --tile-deep: var(--pink-deep); }
+.tile.sky { --tile: var(--sky); --tile-deep: var(--sky-deep); }
+.tile.mint { --tile: var(--mint); --tile-deep: var(--mint-deep); }
+.tile.butter { --tile: var(--butter); --tile-deep: var(--butter-deep); }
+.tile.violet { --tile: var(--violet); --tile-deep: var(--violet-deep); color: #fff; }
+
+.btn {
+  --btn-bg: var(--violet);
+  --btn-fg: #fff;
+  --btn-edge: var(--violet-deep);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  min-height: 50px;
+  padding: 0.7rem 1.6rem;
+  border: none;
+  border-radius: 999px;
+  background: var(--btn-bg);
+  color: var(--btn-fg);
+  font: 800 1rem/1.1 var(--font-ui);
+  text-decoration: none;
+  cursor: pointer;
+  box-shadow: 0 5px 0 var(--btn-edge);
+  transition: transform 0.07s ease, box-shadow 0.07s ease, filter 0.15s ease;
+  user-select: none;
+}
+.btn:hover:not(:disabled) { filter: brightness(1.07); text-decoration: none; }
+.btn:active:not(:disabled) { transform: translateY(5px); box-shadow: 0 0 0 var(--btn-edge); }
+.btn.btn:disabled { --btn-bg: var(--rule); --btn-fg: var(--muted); --btn-edge: var(--pencil); cursor: not-allowed; }
+.btn:focus-visible { outline: 3px solid var(--naples); outline-offset: 3px; }
+.btn.block { width: 100%; }
+.btn.gold { --btn-bg: var(--naples); --btn-fg: var(--ink); --btn-edge: var(--naples-deep); }
+.btn.success { --btn-bg: var(--verdigris); --btn-edge: var(--verdigris-deep); }
+.btn.danger { --btn-bg: var(--lacca); --btn-edge: var(--lacca-deep); }
+.btn.ghost { --btn-bg: var(--leaf); --btn-fg: var(--violet); --btn-edge: var(--rule); }
+.btn.small { min-height: 40px; padding: 0.45rem 1.05rem; font-size: 0.95rem; box-shadow: 0 4px 0 var(--btn-edge); }
+
+.link-btn {
+  background: none;
+  border: none;
+  padding: 0;
+  font: 700 1rem var(--font-ui);
+  color: var(--violet);
+  cursor: pointer;
+}
+.link-btn:hover { text-decoration: underline; text-underline-offset: 3px; }
+
+.field { display: flex; flex-direction: column; gap: 0.35rem; }
+.field label { font-weight: 700; font-size: 0.92rem; }
+.input,
+select.input {
+  width: 100%;
+  min-height: 50px;
+  padding: 0.65rem 1rem;
+  border: 2px solid var(--rule);
+  border-radius: var(--radius);
+  background: var(--paper);
+  font: 600 1rem var(--font-ui);
+  color: var(--ink);
+}
+.input:focus { outline: none; border-color: var(--violet); background: #fff; box-shadow: 0 0 0 4px var(--violet-soft); }
+.input:disabled { color: var(--muted); }
+.check { display: flex; align-items: center; gap: 0.6rem; font-weight: 600; }
+.check input { width: 20px; height: 20px; accent-color: var(--violet); }
+
+.alert {
+  padding: 0.8rem 1.1rem;
+  border-radius: var(--radius);
+  font-weight: 600;
+}
+.alert.error { background: var(--lacca-wash); color: var(--lacca-deep); }
+.alert.success { background: var(--verdigris-wash); color: var(--verdigris-deep); }
+.alert.info { background: var(--violet-soft); color: var(--violet-deep); }
+.alert.warn { background: var(--naples-wash); color: #7a5200; }
+
+.pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+  padding: 0.2rem 0.75rem;
+  border-radius: 999px;
+  font-size: 0.85rem;
+  font-weight: 700;
+  background: var(--violet-soft);
+  color: var(--violet-deep);
+}
+.pill.gold { background: var(--naples-wash); color: #7a5200; }
+.pill.success { background: var(--verdigris-wash); color: var(--verdigris-deep); }
+
+.progress {
+  height: 12px;
+  border-radius: 999px;
+  background: var(--paper-deep);
+  overflow: hidden;
+}
+.progress > span {
+  display: block;
+  height: 100%;
+  border-radius: inherit;
+  background: var(--naples);
+  transition: width 0.45s ease;
+}
+.progress.violet > span { background: var(--violet); }
+.progress.green > span { background: var(--verdigris); }
+
+.spinner {
+  width: 34px;
+  height: 34px;
+  border: 4px solid var(--violet-soft);
+  border-top-color: var(--violet);
+  border-radius: 50%;
+  animation: spin 0.8s linear infinite;
+  margin: 3rem auto;
+}
+@keyframes spin { to { transform: rotate(360deg); } }
+@keyframes pop { 0% { transform: scale(0.96); opacity: 0; } 100% { transform: none; opacity: 1; } }
+@keyframes halo { 0%, 100% { opacity: 0.35; } 50% { opacity: 0.9; } }
+@keyframes bob { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-6px); } }
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  border: 0;
+}
+
+:focus-visible { outline: 3px solid var(--violet); outline-offset: 2px; }
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation: none !important; transition: none !important; }
+}

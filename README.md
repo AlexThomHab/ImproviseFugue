@@ -1,59 +1,36 @@
-# ImprovisingFugue
+# Improvising Fugue — Web
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 22.3.0.
+Angular 22 frontend for Improvising Fugue, a gamified course in historical keyboard improvisation, partimento and fugue.
 
-## Development server
+## Running locally
 
-To start a local development server, run:
+Start the API first (see the `Improvising Fugue Backend` repo), then:
 
-```bash
-ng serve
+```powershell
+npm install
+npm start
 ```
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
+Open `http://localhost:4200`. `proxy.conf.json` forwards `/api` to `http://localhost:5008`, so the refresh-token cookie stays same-origin.
 
-## Code scaffolding
-
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
-
-```bash
-ng generate component component-name
+```powershell
+npm test
+npm run build
 ```
 
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
+## Structure
 
-```bash
-ng generate --help
+```
+src/app/core/       API client, auth service + interceptor, guards, audio, music helpers, models
+src/app/shared/     Icon set, VexFlow notation renderer, piano keyboard
+src/app/layout/     Authenticated shell (top nav, bottom nav on mobile)
+src/app/pages/      Landing, auth, dashboard, learn tree, lesson player, review, account, premium
+src/app/pages/exercises/  Exercise components (info, multiple choice, ordering, keyboard)
 ```
 
-## Building
+## Notes
 
-To build the project run:
-
-```bash
-ng build
-```
-
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
-
-## Running unit tests
-
-To execute unit tests with the [Vitest](https://vitest.dev/) test runner, use the following command:
-
-```bash
-ng test
-```
-
-## Running end-to-end tests
-
-For end-to-end (e2e) testing, run:
-
-```bash
-ng e2e
-```
-
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
-
-## Additional Resources
-
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+- The access token is kept in memory; the session is restored on load from the HttpOnly refresh cookie.
+- VexFlow is lazy-loaded only on pages that show notation.
+- Keyboard exercises emit MIDI note numbers, so Web MIDI input can drive them later without changing the grader.
+- To add an exercise type: add a component in `pages/exercises`, a case in `lesson-player.page.ts`, and a grader case in the API's `ExerciseGrader`.
